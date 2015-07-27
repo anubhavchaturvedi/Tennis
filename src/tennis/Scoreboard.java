@@ -124,7 +124,7 @@ public class Scoreboard {
     }
     
     boolean gameHasEnded() {
-        return player1.get(scoreboardLastIndex) == "game" || 
+        return player1.get(scoreboardLastIndex) == "game" ||
                 player2.get(scoreboardLastIndex) == "game";
     }
     
@@ -147,9 +147,6 @@ public class Scoreboard {
 
     public void displayScoreboard(){
         displayScore(player1);
-        for(int i=0;i<scoreBoardLength();i++){
-            System.out.print("--"+ " ");
-        }
         displayScore(player2);
     }
 

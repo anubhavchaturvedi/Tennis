@@ -17,10 +17,19 @@ public class TennisGame {
         Scoreboard scoreBoard = new Scoreboard();
 
         for (char currentPoint: gameState) {
-            scoreBoard.updateScore(Character.toString(currentPoint));
+            int player = Integer.parseInt(Character.toString(currentPoint).trim());
+            String playerScored = player == 1 ? "D" : "F";
+            if (!scoreBoard.gameHasEnded()) {
+                scoreBoard.updateScore(playerScored);
+                System.out.println(currentPoint + " " + scoreBoard.currentPlayerScore("D") + "," + scoreBoard.currentPlayerScore("F"));
+            }
         }
 
-        System.out.println(scoreBoard.currentScore());
+        System.out.println("Current score is ::"+scoreBoard.currentScore());
+        
+        System.out.println("Scoreboard");
+        System.out.println("-------------");
+        scoreBoard.displayScoreboard();
 
     }
 
