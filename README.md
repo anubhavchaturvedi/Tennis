@@ -14,9 +14,9 @@ Steps to Run
 Tasks allocated
 ---------------
 
-Anubhav - Write the Update Score function to give next score of the board.
-Mayank - Write the main class to parse the input string and invoke the tennis scoreboard.
-Aashish - Write the display logic for current score and whole scoreboard.
+1. Anubhav - Write the Update Score function to give next score of the board.
+2. Mayank - Write the main class to parse the input string and invoke the tennis scoreboard.
+3. Aashish - Write the display logic for current score and whole scoreboard.
 
 API's exposed
 ------------
