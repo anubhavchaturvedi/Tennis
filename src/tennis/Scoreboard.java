@@ -89,9 +89,6 @@ public class Scoreboard {
 
     public void displayScoreboard(){
         displayScore(player1State);
-        for(int i=0;i<scoreBoardLength();i++){
-            System.out.print("--"+ " ");
-        }
         displayScore(player2State);
     }
 
