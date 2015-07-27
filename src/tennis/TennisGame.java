@@ -20,7 +20,11 @@ public class TennisGame {
             scoreBoard.updateScore(Character.toString(currentPoint));
         }
 
-        System.out.println(scoreBoard.currentScore());
+        System.out.println("Current score is ::"+scoreBoard.currentScore());
+        
+        System.out.println("Scoreboard");
+        System.out.println("-------------");
+        scoreBoard.displayScoreboard();
 
     }
 
