@@ -67,6 +67,29 @@ public class Scoreboard {
         return player == player1name ? player1.get(player1.size()-1) : player2.get(player2.size()-1);
     }
     
+    public String currentScore() {
+        return currentScore(player1name) + " - " + currentScore(player2name);
+    }
+
+    int scoreBoardLength(){
+        return player1.size();
+    }
+
+    public void displayScoreboard(){
+        displayScore(player1);
+        for(int i=0;i<scoreBoardLength();i++){
+            System.out.print("--"+ " ");
+        }
+        displayScore(player2);
+    }
+
+    public void displayScore(ArrayList<String> player){
+        for(int i=0;i<player.size();i++){
+            System.out.print(player.get(i)+" | ");
+        }
+        System.out.println();
+    }
+    
     public static void main(String args[]) {
         Scanner scan = new Scanner(System.in);
         Scoreboard board = new Scoreboard();
