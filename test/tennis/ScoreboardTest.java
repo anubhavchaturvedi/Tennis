@@ -9,8 +9,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ScoreboardTest {
-    final String PLAYER_1 = "D";
-    final String PLAYER_2 = "F";
+    static final String PLAYER_1 = "D";
+    static final String PLAYER_2 = "F";
     
     public ScoreboardTest() {
     }
@@ -18,7 +18,7 @@ public class ScoreboardTest {
     @Test
     public void testIsDuce() throws Exception {
         System.out.println("isDuce");
-        Scoreboard instance = new Scoreboard();
+        Scoreboard instance = new Scoreboard(PLAYER_1, PLAYER_2);
 
         assertEquals(false, instance.isDuce());
         instance.updateScore(PLAYER_1);
@@ -39,7 +39,7 @@ public class ScoreboardTest {
     public void testUpdateScore() throws Exception {
 
         System.out.println("updateScore");
-        Scoreboard scoreboard = new Scoreboard();
+        Scoreboard scoreboard = new Scoreboard(PLAYER_1, PLAYER_2);
 
         assertEquals( "love - love", scoreboard.currentScore());
         scoreboard.updateScore(PLAYER_1);
@@ -49,7 +49,7 @@ public class ScoreboardTest {
     @Test
     public void testGameHasEnded() throws Exception {
         System.out.println("Testing gameHasEnded");
-        Scoreboard scoreboard = new Scoreboard();
+        Scoreboard scoreboard = new Scoreboard(PLAYER_1, PLAYER_2);
         assertEquals(false, scoreboard.gameHasEnded());
         scoreboard.updateScore(PLAYER_1);
         assertEquals(false, scoreboard.gameHasEnded());
@@ -65,7 +65,7 @@ public class ScoreboardTest {
     
     @Test
     public void testCurrentScore() throws Exception {
-        Scoreboard scoreboard = new Scoreboard();
+        Scoreboard scoreboard = new Scoreboard(PLAYER_1, PLAYER_2);
         scoreboard.updateScore(PLAYER_1);
         assertEquals("15 - love", scoreboard.currentScore());
     }

@@ -13,9 +13,9 @@ public class Scoreboard {
     
     private int scoreboardLastIndex;
     
-    Scoreboard(){
-        player1name = "D";
-        player2name = "F";
+    Scoreboard(String player1name, String player2name){
+        this.player1name = player1name;
+        this.player2name = player2name;
         player1 = new ArrayList<String>();
         player2 = new ArrayList<String>();
         player1.add("love");

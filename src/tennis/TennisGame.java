@@ -6,9 +6,12 @@ import java.util.Scanner;
  * Created by test on 7/27/2015.
  */
 public class TennisGame {
+    
+    static final String PLAYER_1 = "D";
+    static final String PLAYER_2 = "F";
 
     public static  void main(String args[]) {
-        Scoreboard board = new Scoreboard();
+        Scoreboard board = new Scoreboard(PLAYER_1, PLAYER_2);
         
         Scanner scan = new Scanner(System.in);
         
