@@ -11,6 +11,8 @@ public class Scoreboard {
     private String player2name;
     private static HashMap<String, String> scores;
     
+    private int scoreboardLastIndex;
+    
     Scoreboard(){
         player1name = "D";
         player2name = "F";
@@ -18,6 +20,7 @@ public class Scoreboard {
         player2 = new ArrayList<String>();
         player1.add("love");
         player2.add("love");
+        scoreboardlastIndex = player1.size() - 1;
         
         scores = new HashMap<String, String>();
         scores.put("love", "15");
@@ -28,7 +31,7 @@ public class Scoreboard {
     }
     
     public boolean isDuce(){
-        return player1.get(player1.size()-1) == "40" && player2.get(player2.size()-1) == "40";
+        return player1.get(scoreboardLastIndex) == "40" && player2.get(scoreboardLastIndex) == "40";
     }
     
     boolean updateScore(String playerScored) {
@@ -45,26 +48,31 @@ public class Scoreboard {
         if ( duceCancelled ) {
             player1.add("40");
             player2.add("40");
+            scoreboardLastIndex++;
             return true;
         }
         
         if ( playerScored == player1name ) {
             player1.add(scores.get(player1_currentScore));
             player2.add(player2_currentScore);
+            scoreboardLastIndex++;
         }
         else {
             player1.add(player1_currentScore);
             player2.add(scores.get(player2_currentScore));
+            scoreboardLastIndex++;
         }
         return true;
     }
         
     boolean gameHasEnded() {
-        return player1.get(player1.size()-1) == "game" || player2.get(player2.size()-1) == "game";
+        return player1.get(scoreboardLastIndex) == "game" || 
+                player2.get(scoreboardLastIndex) == "game";
     }
     
     String currentScore(String player) {
-        return player == player1name ? player1.get(player1.size()-1) : player2.get(player2.size()-1);
+        return player == player1name ? player1.get(scoreboardLastIndex) : 
+                player2.get(scoreboardLastIndex);
     }
     
     public String currentScore() {
@@ -72,7 +80,7 @@ public class Scoreboard {
     }
 
     int scoreBoardLength(){
-        return player1.size();
+        return scoreboardLastIndex + 1 ;
     }
 
     public void displayScoreboard(){
