@@ -48,11 +48,17 @@ public class ScoreboardTest {
 
     @Test
     public void testGameHasEnded() throws Exception {
+        System.out.println("Testing gameHasEnded");
         Scoreboard scoreboard = new Scoreboard();
+        assertEquals(false, scoreboard.gameHasEnded());
         scoreboard.updateScore(PLAYER_1);
+        assertEquals(false, scoreboard.gameHasEnded());
         scoreboard.updateScore(PLAYER_1);
+        assertEquals(false, scoreboard.gameHasEnded());
+        scoreboard.updateScore(PLAYER_2);
+        assertEquals(false, scoreboard.gameHasEnded());
         scoreboard.updateScore(PLAYER_1);
-        scoreboard.updateScore(PLAYER_1);
+        assertEquals(false, scoreboard.gameHasEnded());
         scoreboard.updateScore(PLAYER_1);
         assertEquals(true, scoreboard.gameHasEnded());
     }
