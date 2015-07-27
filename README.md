@@ -26,6 +26,7 @@ Scoreboard is a class which provides functions to keep track of score in tennis.
 1. updateScore(playerScored) - Updates the score of player who won a point.
 2. currentScore()- Gets the current score of the scoreboard.
 3. displayScoreboard() - Displays the whole scoreboard of the game.
+4. hasGameEnded() - Checks whether game has come to an end or not
 
 
 
