@@ -20,7 +20,7 @@ public class Scoreboard {
         player2 = new ArrayList<String>();
         player1.add("love");
         player2.add("love");
-        scoreboardlastIndex = player1.size() - 1;
+        scoreboardLastIndex = player1.size() - 1;
         
         scores = new HashMap<String, String>();
         scores.put("love", "15");
