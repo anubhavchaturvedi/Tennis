@@ -31,12 +31,32 @@ public class Scoreboard {
         
     }
     
-    String currentScore() {
-        
+    public String currentScore() {
+        String score="";
+        int length=scoreBoardLength();
+        score+=player1.indexOf(length-1);
+        score+=" - ";
+        score+=player2.indexOf(length-1);
+        return score;
     }
-    
-    void displayScoreboard(){
-        
+
+    int scoreBoardLength(){
+        return player1.size();
+    }
+
+    public void displayScoreboard(){
+        displayScore(player1);
+        for(int i=0;i<scoreBoardLength();i++){
+            System.out.print("--"+ " ");
+        }
+        displayScore(player2);
+    }
+
+    public void displayScore(ArrayList<Integer> player){
+        for(int i=0;i<player.size();i++){
+            System.out.print(player.get(i)+" | ");
+        }
+        System.out.println();
     }
     
 }
