@@ -31,7 +31,7 @@ public class Scoreboard {
     }
     
     public boolean isDuce(){
-        return player1.get(scoreboardLastIndex) == "40" && player2.get(scoreboardLastIndex) == "40";
+        return currentScore(player1name) == "40" && currentScore(player2name) == "40";
     }
     
     boolean updateScore(String playerScored) {
