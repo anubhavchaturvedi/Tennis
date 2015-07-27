@@ -15,14 +15,11 @@ public class ScoreboardTest {
     public ScoreboardTest() {
     }
     
-    /**
-     * Test of isDuce method, of class Scoreboard.
-     */
     @Test
-    public void testIsDuce() {
+    public void testIsDuce() throws Exception {
         System.out.println("isDuce");
         Scoreboard instance = new Scoreboard();
-        
+
         assertEquals(false, instance.isDuce());
         instance.updateScore(PLAYER_1);
         assertEquals(false, instance.isDuce());
@@ -38,70 +35,32 @@ public class ScoreboardTest {
         assertEquals(false, instance.isDuce());
     }
 
-    /**
-     * Test of updateScore method, of class Scoreboard.
-     */
     @Test
-    public void testUpdateScore() {
+    public void testUpdateScore() throws Exception {
+
         System.out.println("updateScore");
         Scoreboard scoreboard = new Scoreboard();
-        
+
         assertEquals( "love - love", scoreboard.currentScore());
         scoreboard.updateScore(PLAYER_1);
         assertEquals( "15 - love", scoreboard.currentScore());
-        
     }
 
-    /**
-     * Test of gameHasEnded method, of class Scoreboard.
-     */
     @Test
-    public void testGameHasEnded() {
-        System.out.println("gameHasEnded");
-        
-
-    /**
-     * Test of currentPlayerScore method, of class Scoreboard.
-     */
-    @Test
-    public void testCurrentPlayerScore() {
-        System.out.println("currentPlayerScore");
-        
+    public void testGameHasEnded() throws Exception {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.updateScore(PLAYER_1);
+        scoreboard.updateScore(PLAYER_1);
+        scoreboard.updateScore(PLAYER_1);
+        scoreboard.updateScore(PLAYER_1);
+        scoreboard.updateScore(PLAYER_1);
+        assertEquals(true, scoreboard.gameHasEnded());
     }
-
-    /**
-     * Test of currentScore method, of class Scoreboard.
-     */
+    
     @Test
-    public void testCurrentScore() {
-        System.out.println("currentScore");
-        
-    }
-
-    /**
-     * Test of scoreBoardLength method, of class Scoreboard.
-     */
-    @Test
-    public void testScoreBoardLength() {
-        System.out.println("scoreBoardLength");
-        
-    }
-
-    /**
-     * Test of displayScoreboard method, of class Scoreboard.
-     */
-    @Test
-    public void testDisplayScoreboard() {
-        System.out.println("displayScoreboard");
-        
-    }
-
-    /**
-     * Test of displayScore method, of class Scoreboard.
-     */
-    @Test
-    public void testDisplayScore() {
-        System.out.println("displayScore");
-        
+    public void testCurrentScore() throws Exception {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.updateScore(PLAYER_1);
+        assertEquals("15 - love", scoreboard.currentScore());
     }
 }

@@ -34,7 +34,7 @@ public class Scoreboard {
         return currentPlayerScore(player1name) == "40" && currentPlayerScore(player2name) == "40";
     }
     
-    boolean updateScore(String playerScored) {
+    public boolean updateScore(String playerScored) {
         if ( gameHasEnded() ) {
             return false;
         }
@@ -123,12 +123,12 @@ public class Scoreboard {
         return currentScore == "40" || currentScore == "A" || currentScore == "game";
     }
     
-    boolean gameHasEnded() {
+    public boolean gameHasEnded() {
         return player1.get(scoreboardLastIndex) == "game" ||
                 player2.get(scoreboardLastIndex) == "game";
     }
     
-    String currentPlayerScore(String player) {
+    private String currentPlayerScore(String player) {
         if ( player == player1name ) {
             return player1.get(scoreboardLastIndex);
         }
@@ -141,7 +141,7 @@ public class Scoreboard {
         return currentPlayerScore(player1name) + " - " + currentPlayerScore(player2name);
     }
 
-    int scoreBoardLength(){
+    private int scoreBoardLength(){
         return scoreboardLastIndex + 1 ;
     }
 
@@ -150,20 +150,10 @@ public class Scoreboard {
         displayScore(player2);
     }
 
-    public void displayScore(ArrayList<String> player){
+    private void displayScore(ArrayList<String> player){
         for(int i=0;i<player.size();i++){
             System.out.print(player.get(i)+" | ");
         }
         System.out.println();
-    }
-    
-    public static void main(String args[]) {
-        Scanner scan = new Scanner(System.in);
-        Scoreboard board = new Scoreboard();
-        while ( !board.gameHasEnded() ) {
-            String playerScored = scan.nextInt() == 1 ? "D" : "F";
-            board.updateScore(playerScored);
-            System.out.println(board.currentScore());
-        }
     }
 }
