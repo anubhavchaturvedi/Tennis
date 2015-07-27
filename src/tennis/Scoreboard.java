@@ -31,7 +31,7 @@ public class Scoreboard {
     }
     
     public boolean isDuce(){
-        return currentScore(player1name) == "40" && currentScore(player2name) == "40";
+        return currentPlayerScore(player1name) == "40" && currentPlayerScore(player2name) == "40";
     }
     
     boolean updateScore(String playerScored) {
@@ -39,8 +39,8 @@ public class Scoreboard {
             return false;
         }
         
-        String player1_currentScore = currentScore(player1name);
-        String player2_currentScore = currentScore(player2name);
+        String player1_currentScore = currentPlayerScore(player1name);
+        String player2_currentScore = currentPlayerScore(player2name);
         
         boolean duceCancelled = ( playerScored == player2name && player1_currentScore == "A" ) ||
                 ( playerScored == player1name && player2_currentScore == "A" );
@@ -70,7 +70,7 @@ public class Scoreboard {
                 player2.get(scoreboardLastIndex) == "game";
     }
     
-    String currentScore(String player) {
+    String currentPlayerScore(String player) {
         if ( player == player1name ) {
             return player1.get(scoreboardLastIndex);
         }
@@ -80,7 +80,7 @@ public class Scoreboard {
     }
     
     public String currentScore() {
-        return currentScore(player1name) + " - " + currentScore(player2name);
+        return currentPlayerScore(player1name) + " - " + currentPlayerScore(player2name);
     }
 
     int scoreBoardLength(){
@@ -108,7 +108,7 @@ public class Scoreboard {
         while ( !board.gameHasEnded() ) {
             String playerScored = scan.nextInt() == 1 ? "D" : "F";
             board.updateScore(playerScored);
-            System.out.println( board.currentScore("D") + "," + board.currentScore("F"));
+            System.out.println(board.currentPlayerScore("D") + "," + board.currentPlayerScore("F"));
         }
     }
 }
