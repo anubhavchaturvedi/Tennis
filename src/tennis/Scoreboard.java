@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Scoreboard {
-    private ArrayList<String> player1;
-    private ArrayList<String> player2;
+    private ArrayList<String> player1State;
+    private ArrayList<String> player2State;
     private String player1name;
     private String player2name;
     private static HashMap<String, String> scores;
@@ -16,11 +16,11 @@ public class Scoreboard {
     Scoreboard(){
         player1name = "D";
         player2name = "F";
-        player1 = new ArrayList<String>();
-        player2 = new ArrayList<String>();
-        player1.add("love");
-        player2.add("love");
-        scoreboardLastIndex = player1.size() - 1;
+        player1State = new ArrayList<String>();
+        player2State = new ArrayList<String>();
+        player1State.add("love");
+        player2State.add("love");
+        scoreboardLastIndex = player1State.size() - 1;
         
         scores = new HashMap<String, String>();
         scores.put("love", "15");
@@ -46,36 +46,36 @@ public class Scoreboard {
                 ( playerScored == player1name && player2_currentScore == "A" );
         
         if ( duceCancelled ) {
-            player1.add("40");
-            player2.add("40");
+            player1State.add("40");
+            player2State.add("40");
             scoreboardLastIndex++;
             return true;
         }
         
         if ( playerScored == player1name ) {
-            player1.add(scores.get(player1_currentScore));
-            player2.add(player2_currentScore);
+            player1State.add(scores.get(player1_currentScore));
+            player2State.add(player2_currentScore);
             scoreboardLastIndex++;
         }
         else {
-            player1.add(player1_currentScore);
-            player2.add(scores.get(player2_currentScore));
+            player1State.add(player1_currentScore);
+            player2State.add(scores.get(player2_currentScore));
             scoreboardLastIndex++;
         }
         return true;
     }
         
     boolean gameHasEnded() {
-        return player1.get(scoreboardLastIndex) == "game" || 
-                player2.get(scoreboardLastIndex) == "game";
+        return player1State.get(scoreboardLastIndex) == "game" ||
+                player2State.get(scoreboardLastIndex) == "game";
     }
     
     String currentPlayerScore(String player) {
         if ( player == player1name ) {
-            return player1.get(scoreboardLastIndex);
+            return player1State.get(scoreboardLastIndex);
         }
         else {
-            return player2.get(scoreboardLastIndex);
+            return player2State.get(scoreboardLastIndex);
         }
     }
     
@@ -88,11 +88,11 @@ public class Scoreboard {
     }
 
     public void displayScoreboard(){
-        displayScore(player1);
+        displayScore(player1State);
         for(int i=0;i<scoreBoardLength();i++){
             System.out.print("--"+ " ");
         }
-        displayScore(player2);
+        displayScore(player2State);
     }
 
     public void displayScore(ArrayList<String> player){
