@@ -42,29 +42,87 @@ public class Scoreboard {
         String player1_currentScore = currentPlayerScore(player1name);
         String player2_currentScore = currentPlayerScore(player2name);
         
-        boolean duceCancelled = ( playerScored == player2name && player1_currentScore == "A" ) ||
-                ( playerScored == player1name && player2_currentScore == "A" );
-        
-        if ( duceCancelled ) {
-            player1.add("40");
-            player2.add("40");
-            scoreboardLastIndex++;
-            return true;
-        }
+        boolean player1_reached40 = reached40(player1name);
+        boolean player2_reached40 = reached40(player2name);
         
         if ( playerScored == player1name ) {
-            player1.add(scores.get(player1_currentScore));
-            player2.add(player2_currentScore);
-            scoreboardLastIndex++;
+            if ( !player2_reached40 ) {
+                if( player1_reached40 ) {
+                    player1.add("game");
+                    player2.add(player2_currentScore);
+                }
+                else {
+                    player1.add(scores.get(player1_currentScore));
+                    player2.add(player2_currentScore);
+                }
+            }
+            else {
+                if( player1_reached40 ) {
+                    if ( player2_currentScore == "A" ) {
+                        player1.add("40");
+                        player2.add("40");
+                    }
+                    else {
+                        player1.add(scores.get(player1_currentScore));
+                        player2.add(player2_currentScore);
+                    }
+                }
+                else {
+                    if ( player2_currentScore == "A" ) {
+                        player1.add(scores.get(player1_currentScore));
+                        player2.add("40");
+                    }
+                    else {
+                        player1.add(scores.get(player1_currentScore));
+                        player2.add(player2_currentScore);
+                    }
+                }
+            }
         }
         else {
-            player1.add(player1_currentScore);
-            player2.add(scores.get(player2_currentScore));
-            scoreboardLastIndex++;
+            if ( !player1_reached40 ) {
+                if( player2_reached40 ) {
+                    player2.add("game");
+                    player1.add(player1_currentScore);
+                }
+                else {
+                    player2.add(scores.get(player2_currentScore));
+                    player1.add(player1_currentScore);
+                }
+            }
+            else {
+                if( player2_reached40 ) {
+                    if ( player1_currentScore == "A" ) {
+                        player2.add("40");
+                        player1.add("40");
+                    }
+                    else {
+                        player2.add(scores.get(player2_currentScore));
+                        player1.add(player1_currentScore);
+                    }
+                }
+                else {
+                    if ( player1_currentScore == "A" ) {
+                        player2.add(scores.get(player2_currentScore));
+                        player1.add("40");
+                    }
+                    else {
+                        player2.add(scores.get(player2_currentScore));
+                        player1.add(player1_currentScore);
+                    }
+                }
+            }
         }
+        
+        scoreboardLastIndex++;
         return true;
     }
         
+    private boolean reached40(String player) {
+        String currentScore = currentPlayerScore(player);
+        return currentScore == "40" || currentScore == "A" || currentScore == "game";
+    }
+    
     boolean gameHasEnded() {
         return player1.get(scoreboardLastIndex) == "game" || 
                 player2.get(scoreboardLastIndex) == "game";
@@ -108,7 +166,7 @@ public class Scoreboard {
         while ( !board.gameHasEnded() ) {
             String playerScored = scan.nextInt() == 1 ? "D" : "F";
             board.updateScore(playerScored);
-            System.out.println(board.currentPlayerScore("D") + "," + board.currentPlayerScore("F"));
+            System.out.println(board.currentScore());
         }
     }
 }
