@@ -71,8 +71,12 @@ public class Scoreboard {
     }
     
     String currentScore(String player) {
-        return player == player1name ? player1.get(scoreboardLastIndex) : 
-                player2.get(scoreboardLastIndex);
+        if ( player == player1name ) {
+            return player1.get(scoreboardLastIndex);
+        }
+        else {
+            return player2.get(scoreboardLastIndex);
+        }
     }
     
     public String currentScore() {
